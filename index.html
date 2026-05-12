@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0a0a0f" />
+    <title>Terminal Systems — Reinventing the Future of Logistics</title>
+    <meta
+      name="description"
+      content="Terminal Systems builds the AI-native operating system for global freight: smart yards, autonomous semi-trucks, and real-time container intelligence."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./styles.css" />
+
+    <!--
+      Three.js + GSAP loaded via CDN as ES modules. No build step required —
+      open index.html through any static server (e.g. `npx serve`).
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+          "gsap": "https://unpkg.com/gsap@3.12.5/index.js",
+          "gsap/ScrollTrigger": "https://unpkg.com/gsap@3.12.5/ScrollTrigger.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- =====================================================================
+         Fixed full-viewport WebGL canvas. The Three.js scene renders here
+         while normal scroll happens on top with text overlays.
+         ================================================================== -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <!-- Parallax 2D image layers — extra depth on top of the 3D scene.
+         They sit between the canvas and the text and translate on scroll. -->
+    <div class="parallax-layer parallax-sun" data-depth="0.05"></div>
+    <div class="parallax-layer parallax-haze" data-depth="0.12"></div>
+    <div class="parallax-layer parallax-grain" data-depth="0"></div>
+    <div class="parallax-layer parallax-scanlines" data-depth="0"></div>
+
+    <!-- Top navigation -->
+    <header class="nav">
+      <a class="nav-logo" href="#hero" aria-label="Terminal Systems home">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>TERMINAL<span class="logo-dot">.</span>SYSTEMS</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#hero">Terminal</a>
+        <a href="#markets">Markets</a>
+        <a href="#fleet">Fleet</a>
+        <a href="#intelligence">Intelligence</a>
+        <a href="#contact" class="nav-cta">Request Access</a>
+      </nav>
+      <button class="nav-burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress" aria-hidden="true">
+      <div class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- =====================================================================
+         Main scroll content. Each <section> is one "act" in the cinematic
+         camera tour. ScrollTrigger reads each section to drive the camera.
+         ================================================================== -->
+    <main>
+      <!-- Act 1 — Hero / wide warehouse yard at sunset -->
+      <section id="hero" class="scene-section" data-scene="hero">
+        <div class="overlay overlay-hero">
+          <p class="eyebrow reveal">[ TS / 001 — TERMINAL ]</p>
+          <h1 class="reveal">
+            We have <em>reinvented</em><br />
+            the future of logistics.
+          </h1>
+          <p class="lede reveal">
+            One operating system for every truck, container, and yard on
+            earth.
+          </p>
+          <div class="hero-cta reveal">
+            <a href="#markets" class="btn btn-primary">Enter the Terminal</a>
+            <a href="#fleet" class="btn btn-ghost">Watch the fleet ↓</a>
+          </div>
+        </div>
+        <div class="hero-corner hero-corner-tl">N 36.1627°</div>
+        <div class="hero-corner hero-corner-tr">W 86.7816°</div>
+        <div class="hero-corner hero-corner-bl">YARD // NASHVILLE-04</div>
+        <div class="hero-corner hero-corner-br">17:42 LOCAL</div>
+      </section>
+
+      <!-- Act 2 — camera dives toward fleet of semi-trucks -->
+      <section id="markets" class="scene-section" data-scene="markets">
+        <div class="overlay overlay-left">
+          <p class="eyebrow reveal">[ TS / 002 — MARKETS ]</p>
+          <h2 class="reveal">
+            Every lane.<br />
+            Every load.<br />
+            <span class="accent">Every minute.</span>
+          </h2>
+          <p class="reveal">
+            From port drayage to long-haul, from cold chain to last-mile —
+            Terminal coordinates the physical world the way fiber networks
+            coordinated the digital one.
+          </p>
+          <ul class="stat-grid reveal">
+            <li>
+              <span class="stat-num" data-count="42">0</span>
+              <span class="stat-label">Markets live</span>
+            </li>
+            <li>
+              <span class="stat-num" data-count="184">0</span>
+              <span class="stat-label">Terminals</span>
+            </li>
+            <li>
+              <span class="stat-num" data-count="99">0</span>
+              <span class="stat-suffix">.97%</span>
+              <span class="stat-label">On-time</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Act 3 — close pass alongside containers, parallax peak -->
+      <section id="fleet" class="scene-section" data-scene="fleet">
+        <div class="overlay overlay-right">
+          <p class="eyebrow reveal">[ TS / 003 — FLEET ]</p>
+          <h2 class="reveal">
+            Steel that <em>thinks.</em>
+          </h2>
+          <p class="reveal">
+            Forty-thousand pound autonomous tractors with sub-centimeter
+            localization. Containers that report temperature, humidity, and
+            tamper events every 800 milliseconds.
+          </p>
+          <div class="spec-block reveal">
+            <div class="spec">
+              <span class="spec-key">TRACTOR</span>
+              <span class="spec-val">TS-Hauler · Class 8 · Level 4</span>
+            </div>
+            <div class="spec">
+              <span class="spec-key">RANGE</span>
+              <span class="spec-val">740 mi · 0 driver intervention</span>
+            </div>
+            <div class="spec">
+              <span class="spec-key">PAYLOAD</span>
+              <span class="spec-val">2 × 40 ft ISO · 67,200 lb gross</span>
+            </div>
+            <div class="spec">
+              <span class="spec-key">UPLINK</span>
+              <span class="spec-val">5G mmWave + LEO failover</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Act 4 — Wireframe AI overlay scene -->
+      <section
+        id="intelligence"
+        class="scene-section scene-section-dark"
+        data-scene="intelligence"
+      >
+        <div class="overlay overlay-center">
+          <p class="eyebrow reveal">[ TS / 004 — INTELLIGENCE ]</p>
+          <h2 class="reveal glitch" data-text="A model of the moving world.">
+            A model of the moving world.
+          </h2>
+          <p class="reveal">
+            Terminal's foundation model ingests 14 million sensor events per
+            second and produces a continuously-updated digital twin of global
+            freight. Your dispatcher just got a co-pilot.
+          </p>
+          <div class="terminal-window reveal" aria-hidden="true">
+            <div class="terminal-bar">
+              <span></span><span></span><span></span>
+              <span class="terminal-title">ts-router · live</span>
+            </div>
+            <pre class="terminal-body"><span class="t-c">$</span> ts route --optimize --fleet=US-WEST
+<span class="t-d">→ parsing 12,418 active loads…</span>
+<span class="t-d">→ solving constraint graph (CO₂, hours, weather)…</span>
+<span class="t-g">✓ saved 41,209 deadhead miles</span>
+<span class="t-g">✓ -312 t CO₂eq this week</span>
+<span class="t-g">✓ on-time confidence: 99.97%</span>
+<span class="t-c">$</span> <span class="t-cursor">█</span></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Act 5 — pullback / horizon reveal -->
+      <section id="contact" class="scene-section" data-scene="contact">
+        <div class="overlay overlay-center">
+          <p class="eyebrow reveal">[ TS / 005 — TERMINAL ]</p>
+          <h2 class="reveal">
+            The world moves on rails<br />
+            we haven't built yet.
+          </h2>
+          <p class="reveal">
+            We are hiring across autonomy, logistics, and infrastructure.
+          </p>
+          <div class="hero-cta reveal">
+            <a href="mailto:hello@terminal.systems" class="btn btn-primary"
+              >hello@terminal.systems</a
+            >
+            <a href="#hero" class="btn btn-ghost">Back to top ↑</a>
+          </div>
+          <footer class="foot">
+            <span>© 2026 Terminal Systems, Inc.</span>
+            <span>Made for the freight that hasn't shipped yet.</span>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <!-- WebGL not supported fallback -->
+    <noscript>
+      <div class="noscript">
+        Terminal Systems requires JavaScript and WebGL to render its
+        cinematic experience. Please enable both, or visit on a modern
+        browser.
+      </div>
+    </noscript>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
